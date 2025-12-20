@@ -1,17 +1,430 @@
+**Creating a simple HTML+CSS CV**
+
+I think I’ll aim for a clean and responsive layout, emphasizing simplicity. Since the design needs to be nice but not too complicated, I’ll provide a balance between functionality and style. I’ll keep things brief but still functional — avoid being too verbose with the code. The goal is to give a solid foundation for a CV that looks good on both desktop and mobile without over-complicating it. Let me get started!
+Here’s a clean, single‑page CV with HTML + CSS in one file, with a modern design.  
+You can copy this into a file like `cv.html` and open it in your browser.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aashik ali Bio-Data</title>
+  <meta charset="UTF-8" />
+  <title>My CV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #f2f5fb;
+      color: #222;
+      display: flex;
+      justify-content: center;
+      padding: 40px 10px;
+    }
+
+    .cv-container {
+      max-width: 1000px;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.1fr 2fr;
+      min-height: 600px;
+    }
+
+    /* Left side */
+    .cv-sidebar {
+      background: linear-gradient(160deg, #1e293b, #0f172a);
+      color: #e5e7eb;
+      padding: 32px 28px;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #facc15, #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 18px;
+    }
+
+    .name {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .role {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9ca3af;
+      margin-top: 6px;
+      margin-bottom: 18px;
+    }
+
+    .sidebar-section-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #9ca3af;
+      margin-top: 28px;
+      margin-bottom: 10px;
+    }
+
+    .contact-item {
+      font-size: 14px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #e5e7eb;
+    }
+
+    .contact-item span.icon {
+      font-size: 16px;
+      width: 18px;
+      text-align: center;
+      opacity: 0.9;
+    }
+
+    .skills-list,
+    .languages-list {
+      list-style: none;
+      font-size: 14px;
+      color: #e5e7eb;
+    }
+
+    .skills-list li,
+    .languages-list li {
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .skill-bar {
+      width: 60%;
+      height: 5px;
+      background: #111827;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #22c55e, #a3e635);
+    }
+
+    /* Right side */
+    .cv-main {
+      padding: 32px 40px;
+    }
+
+    .summary {
+      margin-bottom: 24px;
+      border-left: 3px solid #2563eb;
+      padding-left: 14px;
+      color: #374151;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .section {
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #6b7280;
+      margin-bottom: 10px;
+    }
+
+    .section-title::after {
+      content: "";
+      display: inline-block;
+      margin-left: 8px;
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, #2563eb, transparent);
+      vertical-align: middle;
+    }
+
+    .experience-item,
+    .education-item {
+      margin-bottom: 16px;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .item-role {
+      font-size: 15px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .item-company {
+      font-size: 14px;
+      color: #4b5563;
+    }
+
+    .item-date {
+      font-size: 13px;
+      color: #6b7280;
+      white-space: nowrap;
+    }
+
+    .item-location {
+      font-size: 13px;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
+    .item-description {
+      font-size: 14px;
+      color: #4b5563;
+      line-height: 1.5;
+    }
+
+    .item-description ul {
+      margin-left: 18px;
+      margin-top: 4px;
+    }
+
+    .item-description li {
+      margin-bottom: 4px;
+    }
+
+    .tags {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #dbeafe;
+    }
+
+    .projects-list {
+      list-style: none;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .projects-list li {
+      margin-bottom: 8px;
+    }
+
+    .projects-list span {
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .footer-note {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 800px) {
+      .cv-container {
+        grid-template-columns: 1fr;
+      }
+      .cv-main {
+        padding: 24px 20px 28px;
+      }
+      body {
+        padding: 16px 8px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <center><h1>
-        CirculumVita 
-    </h1>
-    <h5>
-        Email id- Aashikali240@gmail.com 
-    </h5></center>
-    <h3>Aashik ALI</h3>
+  <div class="cv-container">
+    <!-- LEFT SIDE -->
+    <aside class="cv-sidebar">
+      <div class="avatar">
+        A
+      </div>
+      <div class="name">Your Name</div>
+      <div class="role">Web Developer</div>
+
+      <div class="sidebar-section-title">Contact</div>
+      <div class="contact-item">
+        <span class="icon">📍</span>
+        <span>City, Country</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">📞</span>
+        <span>+00 000 000 000</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">✉️</span>
+        <span>youremail@example.com</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">🌐</span>
+        <span>github.com/yourprofile</span>
+      </div>
+
+      <div class="sidebar-section-title">Skills</div>
+      <ul class="skills-list">
+        <li>
+          <span>HTML / CSS</span>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 90%;"></div>
+          </div>
+        </li>
+        <li>
+          <span>JavaScript</span>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 80%;"></div>
+          </div>
+        </li>
+        <li>
+          <span>React</span>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 70%;"></div>
+          </div>
+        </li>
+        <li>
+          <span>Git / GitHub</span>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 85%;"></div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="sidebar-section-title">Languages</div>
+      <ul class="languages-list">
+        <li>English <span>B2</span></li>
+        <li>Arabic <span>Native</span></li>
+        <li>Hindi <span>B1</span></li>
+      </ul>
+    </aside>
+
+    <!-- RIGHT SIDE -->
+    <main class="cv-main">
+      <section class="summary">
+        Motivated web developer with a strong focus on clean UI, responsive layouts, and maintainable code. Experienced with Git, modern JavaScript, and building real‑world projects from idea to deployment.
+      </section>
+
+      <section class="section">
+        <div class="section-title">Experience</div>
+
+        <div class="experience-item">
+          <div class="item-header">
+            <div>
+              <div class="item-role">Frontend Developer</div>
+              <div class="item-company">Awesome Company</div>
+            </div>
+            <div class="item-date">2023 – Present</div>
+          </div>
+          <div class="item-location">Remote</div>
+          <div class="item-description">
+            <ul>
+              <li>Built responsive dashboards using HTML, CSS, and JavaScript.</li>
+              <li>Collaborated with designers to deliver pixel-perfect UI.</li>
+              <li>Used Git and GitHub for version control and code reviews.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Git</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="item-header">
+            <div>
+              <div class="item-role">Junior Web Developer</div>
+              <div class="item-company">Freelance</div>
+            </div>
+            <div class="item-date">2021 – 2023</div>
+          </div>
+          <div class="item-location">Hybrid</div>
+          <div class="item-description">
+            <ul>
+              <li>Developed landing pages and small business websites.</li>
+              <li>Optimized sites for performance and mobile devices.</li>
+              <li>Integrated contact forms and basic analytics.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Responsive Design</span>
+              <span class="tag">SEO basics</span>
+              <span class="tag">UI/UX</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Education</div>
+
+        <div class="education-item">
+          <div class="item-header">
+            <div>
+              <div class="item-role">Bachelor of Computer Science</div>
+              <div class="item-company">Your University</div>
+            </div>
+            <div class="item-date">2018 – 2022</div>
+          </div>
+          <div class="item-location">City, Country</div>
+          <div class="item-description">
+            Focus on software development, data structures, and web technologies. Participated in team projects and coding competitions.
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Projects</div>
+        <ul class="projects-list">
+          <li>
+            <span>Task Manager App –</span> Full front‑end for a to‑do application with filters, dark mode, and local storage.
+          </li>
+          <li>
+            <span>Portfolio Website –</span> Personal portfolio showcasing projects, built with responsive design and smooth scroll animations.
+          </li>
+          <li>
+            <span>GitHub Explorer –</span> Simple app that fetches and displays GitHub user repositories and stats.
+          </li>
+        </ul>
+      </section>
+
+      <div class="footer-note">
+        References available on request.
+      </div>
+    </main>
+  </div>
 </body>
 </html>
+```
+
+If you tell me your real details (name, role, skills), I can customize this CV code exactly for you.
