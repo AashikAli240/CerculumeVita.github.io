@@ -381,4 +381,24 @@ a:hover {
         align-items: flex-start;
         gap: 0.25rem;
     }
+	
+	
+	
+	
+.cert-link {
+    margin-right: 8px;
+	
+}
+
+.cert-icon {
+    font-size: 22px;
+    color: #facc15; /* Golden */
+    transition: 0.3s ease;
+	background-color:red;
+}
+
+.cert-link:hover .cert-icon {
+    color: red; /* Light Blue on hover */
+}
+
 }
