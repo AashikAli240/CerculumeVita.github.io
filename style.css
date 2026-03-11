@@ -82,6 +82,38 @@ body {
     color: #d1d5db;
 }
 
+
+.contact-card {
+    position: relative;
+}
+
+.profile-pic {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+
+    position: absolute;
+    left:300px;    /* left corner */
+	top:-50px;   /* thoda aur upar */
+}
+
+/* MOBILE FIX */
+@media (max-width: 600px) {
+    .contact-card {
+        text-align: left !important;   /* center hone se rokta hai */
+    }
+
+    .profile-pic {
+        left:300px;    /* left corner */
+		top:-50px;   /* thoda aur upar */        /* thoda upar */
+        margin: 0 !important;          /* center margin remove */
+    }
+}
+
+
+
 /* Theme toggle */
 #themeToggle {
     border: 1px solid rgba(148, 163, 184, 0.6);
