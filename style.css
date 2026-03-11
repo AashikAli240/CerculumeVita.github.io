@@ -86,18 +86,6 @@ body {
     top: -50px;
 }
 
-/* MOBILE FIX */
-@media (max-width: 600px) {
-    .contact-card {
-        text-align: left !important;   /* center hone se rokta hai */
-    }
-
-    .profile-pic {
-            left:360px !important;         /* force left */
-        top: -50px !important;         /* thoda upar */
-        margin: 0 !important;          /* center margin remove */
-    }
-}
 
 
 
