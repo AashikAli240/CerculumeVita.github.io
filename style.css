@@ -88,8 +88,8 @@ body {
 }
 
 .profile-pic {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid #fff;
@@ -106,7 +106,7 @@ body {
     }
 
     .profile-pic {
-        left:300px;    /* left corner */
+        left:350px;    /* left corner */
 		top:-50px;   /* thoda aur upar */        /* thoda upar */
         margin: 0 !important;          /* center margin remove */
     }
