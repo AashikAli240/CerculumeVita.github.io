@@ -94,7 +94,7 @@ body {
     object-fit: cover;
     border: 2px solid #fff;
 
-    position: absolute;
+    
     left:300px;    /* left corner */
 	top:-50px;   /* thoda aur upar */
 }
