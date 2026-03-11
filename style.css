@@ -74,30 +74,7 @@ body {
     position: relative;
 }
 
-.profile-pic {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #fff;
 
-    position: absolute;
-    left:300px;
-    top: -50px;
-}
-
-/* MOBILE FIX */
-@media (max-width: 600px) {
-    .contact-card {
-        text-align: left !important;   /* center hone se rokta hai */
-    }
-
-    .profile-pic {
-            left:360px !important;         /* force left */
-        top: -50px !important;         /* thoda upar */
-        margin: 0 !important;          /* center margin remove */
-    }
-}
 
 
 
