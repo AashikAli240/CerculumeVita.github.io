@@ -328,6 +328,99 @@ Intermediate (12th) – Physics & Mathematics</h3>
                 <p class="signature">Signature: <span class="signature-line">AASHIK ALI</span></p>
             </div>
         </section>
+
+		<center><h2 style="
+  color:#00d4ff;
+  margin-bottom:10px;
+  font-size:22px;
+  font-weight:600;
+">
+  Contact With Me
+</h2></center>
+
+<div style="
+  max-width:800px;
+  background:#0f172a;
+  padding:0px;
+  border-radius:10px;
+  border:1px solid #1e293b;
+  box-shadow:0 0 10px rgba(0,0,0,0.3);
+">
+
+<form style="padding:0px; margin:-42px 0 1px;" id="contactForm" action="https://formspree.io/f/mykndzpg" method="POST">
+
+  <label style="color:#cbd5e1; font-size:13px;">Your Name</label>
+  <input type="text" name="name" required
+    style="width:100%; padding:8px; margin:2px 0 1px;
+    background:#cbd5e1; border:1px solid #334155; color:black;
+    border-radius:6px; font-size:13px;">
+
+  <label style="color:#cbd5e1; font-size:13px;">Your Email</label>
+  <input type="email" name="email" required
+    style="width:100%; padding:8px; margin:2px 0 12px;
+    background:#cbd5e1; border:1px solid #334155; color:black;
+    border-radius:6px; font-size:13px;">
+
+  <label style="color:#cbd5e1; font-size:13px;">Your Message</label>
+  <textarea name="message" required rows="3"
+    style="width:100%; padding:8px; margin:2px 0 15px;
+    background:#cbd5e1; border:1px solid #334155; color:black;
+    border-radius:6px; font-size:13px;"></textarea>
+
+  <button type="submit"
+    style="width:100%; padding:10px; background:#00d4ff; color:#000;
+    font-weight:600; border:none; border-radius:6px; cursor:pointer;
+    transition:0.3s; font-size:14px;">
+    Send Message
+  </button>
+
+</form>
+
+<!-- SUCCESS MESSAGE -->
+<p id="formStatus" style="
+  color:#00ff9d;
+  margin:10px 0 15px;
+  font-size:15px;
+  font-weight:600;
+  text-align:center;
+  display:none;
+">
+  ✔ Your message has been sent successfully!
+</p>
+
+</div>
+
+<script>
+  const btn = document.querySelector("button");
+  btn.addEventListener("mouseover", () => {
+    btn.style.background = "#38bdf8";
+  });
+  btn.addEventListener("mouseout", () => {
+    btn.style.background = "#00d4ff";
+  });
+
+  // AJAX SUBMIT (NO REDIRECT)
+  const form = document.getElementById("contactForm");
+  const statusMsg = document.getElementById("formStatus");
+
+  form.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: { "Accept": "application/json" }
+    });
+
+    if (response.ok) {
+      statusMsg.style.display = "block";
+      form.reset();
+    }
+  });
+</script>
+		
     </section>
 </main>
 
