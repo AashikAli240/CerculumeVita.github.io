@@ -101,17 +101,18 @@ body {
     left:300px;    /* left corner */
 	top:-50px;   /* thoda aur upar */
 }
-@@ -106,11 +106,10 @@ body {
+/* MOBILE FIX */
+@media (max-width: 600px) {
+    .contact-card {
+        text-align: left !important;   /* center hone se rokta hai */
     }
 
     .profile-pic {
-        left:350px;    /* left corner */
-        left:300px;    /* left corner */
+        left:370px;    /* left corner */
 		top:-50px;   /* thoda aur upar */        /* thoda upar */
         margin: 0 !important;          /* center margin remove */
     }
 }
-
 
 /* Theme toggle */
 #themeToggle {
