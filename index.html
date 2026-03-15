@@ -423,6 +423,166 @@ Intermediate (12th) – Physics & Mathematics</h3>
 		
     </section>
 
+	<!-- ⭐ FULL GALAXY + FIRE METEOR + CLICK BURST -->
+<canvas id="universe"></canvas>
+
+<style>
+#universe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(circle at top, #120a25 0%, #02010a 45%, #000 100%);
+}
+</style>
+
+<script>
+const canvas = document.getElementById("universe");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+let meteors = [];
+
+// ⭐ Galaxy particles
+for (let i = 0; i < 260; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 1.5 + 0.5,
+    speedX: (Math.random() - 0.5) * 0.15,
+    speedY: (Math.random() - 0.5) * 0.15,
+    glow: Math.random() * 15 + 5
+  });
+}
+
+// ⭐ Create slow fireball meteor
+function createMeteor() {
+  const startX = Math.random() * canvas.width;
+
+  meteors.push({
+    x: startX,
+    y: -40,
+    size: Math.random() * 4 + 3, 
+    speed: Math.random() * 1.2 + 0.8, 
+    angle: Math.PI / 2, 
+    opacity: 1,
+    tail: Math.random() * 90 + 80
+  });
+}
+
+// ⭐ Meteor kabhi-kabhi aaye
+setInterval(() => {
+  if (Math.random() > 0.65) {
+    createMeteor();
+  }
+}, 2000);
+
+function animateUniverse() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // ⭐ Galaxy particles
+  particles.forEach(p => {
+    ctx.shadowBlur = p.glow;
+    ctx.shadowColor = "#00eaff";
+    ctx.fillStyle = "#00eaff";
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+
+    p.x += p.speedX;
+    p.y += p.speedY;
+
+    if (p.x < 0) p.x = canvas.width;
+    if (p.x > canvas.width) p.x = 0;
+    if (p.y < 0) p.y = canvas.height;
+    if (p.y > canvas.height) p.y = 0;
+  });
+
+  // ⭐ Fireball meteors
+  meteors.forEach((m, index) => {
+
+    // 🔥 Fireball head (round)
+    ctx.shadowBlur = 25;
+    ctx.shadowColor = "orange";
+    ctx.fillStyle = "white";
+    ctx.beginPath();
+    ctx.arc(m.x, m.y, m.size, 0, Math.PI * 2);
+    ctx.fill();
+
+    // 🔥 Fire tail
+    const tailX = m.x;
+    const tailY = m.y - m.tail;
+
+    const grad = ctx.createLinearGradient(m.x, m.y, tailX, tailY);
+    grad.addColorStop(0, `rgba(255,255,255,${m.opacity})`);
+    grad.addColorStop(0.3, `rgba(255,180,60,${m.opacity})`);
+    grad.addColorStop(1, `rgba(255,80,0,0)`);
+
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(m.x, m.y);
+    ctx.lineTo(tailX, tailY);
+    ctx.stroke();
+
+    // ⭐ Movement (slow + straight down)
+    m.y += m.speed;
+
+    // ⭐ Fade only near bottom
+    if (m.y > canvas.height * 0.7) {
+      m.opacity -= 0.005;
+    }
+
+    // ⭐ Remove only after bottom
+    if (m.y > canvas.height + 50) {
+      meteors.splice(index, 1);
+    }
+  });
+
+  requestAnimationFrame(animateUniverse);
+}
+
+animateUniverse();
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
+
+<!-- ✧ CLICK ENERGY BURST -->
+<script>
+document.addEventListener("click", function(e) {
+  for (let i = 0; i < 25; i++) {
+    let spark = document.createElement("div");
+    spark.innerHTML = "✧";
+    spark.style.position = "absolute";
+    spark.style.left = e.pageX + "px";
+    spark.style.top = e.pageY + "px";
+    spark.style.color = "#00eaff";
+    spark.style.fontSize = (Math.random() * 20 + 12) + "px";
+    spark.style.opacity = 1;
+    spark.style.filter = "drop-shadow(0 0 6px #00eaff)";
+    spark.style.transition = "all 1s ease-out";
+
+    document.body.appendChild(spark);
+
+    setTimeout(() => {
+      spark.style.transform = `translate(${Math.random()*150-75}px, ${Math.random()*150-75}px) scale(0.3)`;
+      spark.style.opacity = 0;
+    }, 20);
+
+    setTimeout(() => {
+      spark.remove();
+    }, 1100);
+  }
+});
+</script>
 
 	
 </main>
