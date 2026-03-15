@@ -1,3 +1,6 @@
+
+
+
 /* Global styles */
 :root {
     --bg-color: #f5f7fb;
@@ -35,8 +38,14 @@ body {
     margin: 0;
     font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     background: radial-gradient(circle at top left, #e0f2fe 0, var(--bg-color) 45%);
-    color: var(--text-main);
-}
+    color: var(--text-main);opacity: 0;
+    transition: opacity 0.8s ease;
+    }
+
+ 
+    body.loaded {
+        opacity: 1;
+    }
 
 /* Containers */
 .container {
