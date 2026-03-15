@@ -68,6 +68,34 @@ body {
     padding: 1rem 0 1.1rem;
 }
 
+
+
+#themeToggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;   
+    border: none;   
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    z-index: 9999;
+    
+}
+
+#themeToggle:active {
+    transform: scale(0.9);
+}
+
+@media (max-width: 600px) {
+    #themeToggle {        
+        top: 10px;
+        right: 10px;
+    }
+}
+
+
 .name {
     margin: 0;
     font-size: clamp(1.8rem, 3vw, 2.3rem);
@@ -474,4 +502,31 @@ a:hover {
     color: #00eaff;
     box-shadow: 0 8px 20px rgba(0, 238, 255, 0.4);
     border-color: rgba(0, 238, 255, 0.6);
+}
+
+@media (max-width: 640px) {
+
+    .site-footer {
+        padding: 20px 10px;
+    }
+
+    .site-footer .footer-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .site-footer .social-icons {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .site-footer .back-to-top {
+        margin-top: 10px;
+    }
 }
