@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Loading...</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: radial-gradient(circle at center, #0a0a0a, #000);
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+    }
+
+    /* Neon Glow Loader */
+    .loader {
+        width: 70px;
+        height: 70px;
+        border: 6px solid rgba(255, 255, 255, 0.2);
+        border-top-color: #00eaff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite, glow 1.5s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    @keyframes glow {
+        0% { box-shadow: 0 0 5px #00eaff; }
+        50% { box-shadow: 0 0 20px #00eaff; }
+        100% { box-shadow: 0 0 5px #00eaff; }
+    }
+
+    /* Text */
+    .text {
+        margin-top: 25px;
+        font-size: 22px;
+        font-weight: 600;
+        color: #00eaff;
+        text-shadow: 0 0 10px #00eaff;
+        animation: fadeText 2s ease-in-out infinite;
+    }
+
+    @keyframes fadeText {
+        0% { opacity: 0.3; }
+        50% { opacity: 1; }
+        100% { opacity: 0.3; }
+    }
+</style>
+</head>
+
+<body>
+
+    <div class="loader"></div>
+    <div class="text">Loading Aashik Ali’s Portfolio…</div>
+
+<script>
+    setTimeout(() => {
+        window.location.href = "index.html?from=1";
+    }, 3000);
+</script>
+
+</body>
+</html>
