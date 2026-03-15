@@ -114,6 +114,7 @@ body {
     }
 }
 
+
 /* Theme toggle */
 #themeToggle {
     border: 1px solid rgba(148, 163, 184, 0.6);
@@ -433,6 +434,7 @@ a:hover {
     color: red; /* Light Blue on hover */
 }
 
+
 }
 
 
@@ -473,7 +475,3 @@ a:hover {
     box-shadow: 0 8px 20px rgba(0, 238, 255, 0.4);
     border-color: rgba(0, 238, 255, 0.6);
 }
-
-
-
-
