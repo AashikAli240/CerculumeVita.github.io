@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const fromIntro = urlParams.get("from");
+
+    if (fromIntro !== "1") {
+        window.location.href = "intro.html";
+    }
+</script>
+
+
     <meta charset="UTF-8">
     <title>Aashik Ali | CV </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +22,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
 	
 </head>
 <body>
@@ -588,6 +601,7 @@ document.addEventListener("click", function(e) {
 </main>
 
 
+
 <footer class="site-footer">
     <div class="container footer-content">
         <p>© <span id="year"></span> · Designed & coded by <strong>Aashik Ali</strong></p>
@@ -605,6 +619,16 @@ document.addEventListener("click", function(e) {
         <a href="#top" class="back-to-top">Back to top ↑</a>
     </div>
 </footer>
+
+<script>
+    window.onload = () => {
+        document.body.classList.add("loaded");
+    };
+</script>
+
+
+
+
 <script src="script.js"></script>
 </body>
 </html>
