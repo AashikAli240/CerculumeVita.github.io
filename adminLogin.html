@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Login | Aashik Ali</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="admin.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- LOGIN BOX -->
+<div class="admin-card" id="loginBox">
+    <h2><i class="fa-solid fa-shield-halved"></i> Admin Login</h2>
+    <input type="text" id="adminUser" placeholder="Username">
+    <input type="password" id="adminPass" placeholder="Password">
+    <button class="btn full" onclick="loginAdmin()">Login</button>
+    <a href="#" onclick="showCreateAdmin()">Create Admin</a>
+</div>
+
+<!-- CREATE ADMIN -->
+<div class="admin-card" id="createAdminBox" style="display:none;">
+    <h2>Create Admin</h2>
+    <input type="text" id="newAdminUser" placeholder="Create Username">
+    <input type="password" id="newAdminPass" placeholder="Create Password">
+    <button class="btn full" onclick="createAdmin()">Create Admin</button>
+    <a href="#" onclick="showLogin()">Back to Login</a>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin-panel" id="adminPanel">
+    <h1>Welcome, Admin</h1>
+
+    <div class="menu-bar">
+        <button onclick="showSection('computerSkills')">Computer Skills</button>
+        <button onclick="showSection('technicalSkills')">Technical Skills</button>
+        <button onclick="showSection('gallery')">Gallery</button>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <!-- COMPUTER SKILLS -->
+    <div id="computerSkills" class="section">
+        <h2>Computer Skills</h2>
+
+        <div class="input-row">
+            <select id="skillSelect">
+                <option value="">Select skill</option>
+                <option>MS Office</option>
+                <option>Data Cleaning</option>
+                <option>E-mail Management</option>
+                <option>Basic Programming (HTML, CSS, PYTHON)</option>
+                <option>DevOps (Git & GitHub, AWS, Jenkins, Docker)</option>
+                <option>System Troubleshooting</option>
+                <option>Logistics Management</option>
+                <option>IT Operations</option>
+                <option>OS Installations</option>
+            </select>
+
+            <input type="text" id="newSkill" placeholder="Or write custom skill">
+
+            <button class="btn" onclick="addSkill()">Add</button>
+        </div>
+
+        <div class="row-table" id="skillList"></div>
+    </div>
+
+    <!-- TECHNICAL SKILLS -->
+    <div id="technicalSkills" class="section">
+        <h2>Technical Skills</h2>
+
+        <div class="input-row">
+            <select id="techSelect">
+                <option value="">Select technical skill</option>
+                <option>Linux / Ubuntu</option>
+                <option>AWS Basics</option>
+                <option>Jenkins CI/CD</option>
+                <option>Docker & Containers</option>
+                <option>Kubernetes Basics</option>
+                <option>Git / GitHub / GitLab</option>
+                <option>Network Troubleshooting</option>
+            </select>
+
+            <input type="text" id="newtechSkill" placeholder="Or write custom technical skill">
+
+            <button class="btn" onclick="addTechSkill()">Add</button>
+        </div>
+
+        <div class="row-table" id="TechList"></div>
+    </div>
+
+    <!-- GALLERY -->
+    <div id="gallery" class="section">
+        <h2>Gallery</h2>
+
+        <div class="input-row">
+            <select id="galleryCategory">
+                <option value="">Select type</option>
+                <option>Certificate</option>
+                <option>Project</option>
+                <option>Award</option>
+                <option>Workshop</option>
+            </select>
+
+            <input type="text" id="galleryTitle" placeholder="Write title">
+
+            <input type="file" id="galleryImage" accept="image/*">
+
+            <button class="btn" onclick="uploadGalleryImage()">Upload</button>
+        </div>
+
+        <div class="row-table" id="galleryList"></div>
+    </div>
+</div>
+
+<footer>
+    © <span id="year"></span> Designed & Coded by <strong>Aashik Ali</strong>
+</footer>
+
+<script src="admin.js"></script>
+</body>
+</html>
+
+<script>
+// YEAR AUTO UPDATE
+document.getElementById("year").innerText = new Date().getFullYear();
+
+/* ---------------- SHOW/HIDE LOGIN + CREATE ADMIN ---------------- */
+function showCreateAdmin() {
+    loginBox.style.display = "none";
+    createAdminBox.style.display = "block";
+}
+
+function showLogin() {
+    createAdminBox.style.display = "none";
+    loginBox.style.display = "block";
+}
+
+/* ---------------- SECTION SWITCHING ---------------- */
+function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.style.display = "none");
+    document.getElementById(id).style.display = "block";
+}
+
+/* ---------------- LOGOUT ---------------- */
+function logout() {
+    adminPanel.style.display = "none";
+    loginBox.style.display = "block";
+}
+
+/* ---------------- CREATE ADMIN ---------------- */
+function createAdmin() {
+    let u = newAdminUser.value.trim();
+    let p = newAdminPass.value.trim();
+
+    if (!u || !p) {
+        alert("Enter username & password");
+        return;
+    }
+
+    localStorage.setItem("adminUser", u);
+    localStorage.setItem("adminPass", p);
+
+    alert("Admin Created Successfully!");
+    showLogin();
+}
+
+/* ---------------- LOGIN ---------------- */
+function loginAdmin() {
+    let u = adminUser.value.trim();
+    let p = adminPass.value.trim();
+
+    if (u === localStorage.getItem("adminUser") &&
+        p === localStorage.getItem("adminPass")) {
+
+        loginBox.style.display = "none";
+        adminPanel.style.display = "block";
+        showSection('computerSkills');
+
+    } else {
+        alert("Wrong username or password!");
+    }
+}
+</script>
+
+
+<script type="module">
+/* ---------------- FIREBASE IMPORTS ---------------- */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { 
+    getDatabase, ref, push, remove, update, onValue 
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+import { 
+    getStorage, ref as sRef, uploadBytes, getDownloadURL 
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
+/* ---------------- FIREBASE CONFIG ---------------- */
+const firebaseConfig = {
+  apiKey: "AIzaSyC00_e1kuKJShvPZDh_-uq8sZBaEQyLkoQ",
+  authDomain: "cv-database-1b96d.firebaseapp.com",
+  databaseURL: "https://cv-database-1b96d-default-rtdb.firebaseio.com",
+  projectId: "cv-database-1b96d",
+  storageBucket: "cv-database-1b96d.firebasestorage.app",
+  messagingSenderId: "862630825074",
+  appId: "1:862630825074:web:b8f64a097df0b29d2e46eb"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const storage = getStorage(app);
+
+/* ============================================================
+   1) COMPUTER SKILLS
+============================================================ */
+const skillsRef = ref(db, "skills");
+
+window.addSkill = function () {
+    let fromSelect = skillSelect.value.trim();
+    let fromInput  = newSkill.value.trim();
+    let skill = fromInput || fromSelect;
+
+    if (!skill) return alert("Enter or select a skill");
+
+    push(skillsRef, { name: skill, visible: true });
+
+    newSkill.value = "";
+    skillSelect.value = "";
+};
+
+window.deleteSkill = function (key) {
+    remove(ref(db, "skills/" + key));
+};
+
+window.toggleSkillVisible = function (key, visible, name) {
+    update(ref(db, "skills/" + key), {
+        name: name,
+        visible: !visible
+    });
+};
+
+onValue(skillsRef, (snapshot) => {
+    skillList.innerHTML = "";
+    snapshot.forEach((child) => {
+        const data = child.val();
+        const name = data.name || data;
+        const visible = data.visible !== false;
+
+        skillList.innerHTML += `
+            <div class="row-item ${visible ? "" : "hidden"}">
+                <div class="item-main">
+                    <span class="item-title">${name}</span>
+                    <span class="item-meta">${visible ? "Visible" : "Hidden"}</span>
+                </div>
+
+                <div class="row-actions">
+                    <button class="toggle-btn"
+                        onclick="toggleSkillVisible('${child.key}', ${visible}, '${name}')">
+                        ${visible ? "Hide" : "Show"}
+                    </button>
+
+                    <button class="delete-btn"
+                        onclick="deleteSkill('${child.key}')">Delete</button>
+                </div>
+            </div>
+        `;
+    });
+});
+
+
+/* ============================================================
+   2) TECHNICAL SKILLS
+============================================================ */
+const techRef = ref(db, "techSkills");
+
+window.addTechSkill = function () {
+    let fromSelect = techSelect.value.trim();
+    let fromInput  = newtechSkill.value.trim();
+    let skill = fromInput || fromSelect;
+
+    if (!skill) return alert("Enter or select a technical skill");
+
+    push(techRef, { name: skill, visible: true });
+
+    newtechSkill.value = "";
+    techSelect.value = "";
+};
+
+window.deleteTechSkill = function (key) {
+    remove(ref(db, "techSkills/" + key));
+};
+
+window.toggleTechVisible = function (key, visible, name) {
+    update(ref(db, "techSkills/" + key), {
+        name: name,
+        visible: !visible
+    });
+};
+
+onValue(techRef, (snapshot) => {
+    TechList.innerHTML = "";
+    snapshot.forEach((child) => {
+        const data = child.val();
+        const name = data.name || data;
+        const visible = data.visible !== false;
+
+        TechList.innerHTML += `
+            <div class="row-item ${visible ? "" : "hidden"}">
+                <div class="item-main">
+                    <span class="item-title">${name}</span>
+                    <span class="item-meta">${visible ? "Visible" : "Hidden"}</span>
+                </div>
+
+                <div class="row-actions">
+                    <button class="toggle-btn"
+                        onclick="toggleTechVisible('${child.key}', ${visible}, '${name}')">
+                        ${visible ? "Hide" : "Show"}
+                    </button>
+
+                    <button class="delete-btn"
+                        onclick="deleteTechSkill('${child.key}')">Delete</button>
+                </div>
+            </div>
+        `;
+    });
+});
+
+
+/* ============================================================
+   3) GALLERY (IMAGE UPLOAD + TITLE + CATEGORY)
+============================================================ */
+const galleryRef = ref(db, "gallery");
+
+window.uploadGalleryImage = async function () {
+    let category = galleryCategory.value.trim();
+    let title = galleryTitle.value.trim();
+    let file = galleryImage.files[0];
+
+    if (!category || !title || !file) {
+        alert("Please select category, title and image");
+        return;
+    }
+
+    const storagePath = sRef(storage, "gallery/" + Date.now() + "_" + file.name);
+
+    await uploadBytes(storagePath, file);
+    const imageURL = await getDownloadURL(storagePath);
+
+    push(galleryRef, {
+        title: title,
+        category: category,
+        imageURL: imageURL,
+        visible: true
+    });
+
+    galleryTitle.value = "";
+    galleryCategory.value = "";
+    galleryImage.value = "";
+
+    alert("Image uploaded successfully!");
+};
+
+window.deleteGalleryItem = function (key) {
+    remove(ref(db, "gallery/" + key));
+};
+
+window.toggleGalleryVisible = function (key, visible, title, category, imageURL) {
+    update(ref(db, "gallery/" + key), {
+        title: title,
+        category: category,
+        imageURL: imageURL,
+        visible: !visible
+    });
+};
+
+onValue(galleryRef, (snapshot) => {
+    galleryList.innerHTML = "";
+    snapshot.forEach((child) => {
+        const data = child.val();
+        if (!data) return;
+
+        galleryList.innerHTML += `
+            <div class="row-item ${data.visible ? "" : "hidden"}">
+                <div class="item-main">
+                    <span class="item-title">${data.title}</span>
+                    <span class="item-meta">${data.category}</span>
+                </div>
+
+                <div class="row-actions">
+                    <button class="toggle-btn"
+                        onclick="toggleGalleryVisible('${child.key}', ${data.visible}, '${data.title}', '${data.category}', '${data.imageURL}')">
+                        ${data.visible ? "Hide" : "Show"}
+                    </button>
+
+                    <button class="delete-btn"
+                        onclick="deleteGalleryItem('${child.key}')">Delete</button>
+                </div>
+            </div>
+        `;
+    });
+});
+</script>
