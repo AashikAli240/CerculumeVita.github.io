@@ -22,20 +22,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 
 	
 </head>
 <body>
+
 <header class="top-header">
     <div class="container header-content">
-        <div>
-            <h1 class="name">Aashik Ali</h1>
-            <p class="headline">"Multi-skilled" and "Actively Upskilling" </p>
+
+        <!-- ⭐ Hamburger (Mobile Only) -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-        <button id="themeToggle" aria-label="Toggle dark mode">
+
+        <!-- ⭐ Name Center -->
+        <div class="title-center">
+            <h1 class="name">Aashik Ali</h1>
+            <p class="headline">"Multi-skilled" and "Actively Upskilling"</p>
+        </div>
+
+        <!-- ⭐ Desktop Menu -->
+        <nav class="menu" id="menu">
+            <a href="index.html">Home</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#about">About</a>
+            <a href="#year">Contact</a>
+
+        </nav>
+
+        <!-- ⭐ Theme Toggle (Desktop Only) -->
+        <button id="themeToggle" aria-label="Toggle dark mode" class="theme-btn">
             <span class="theme-icon">🌙</span>
         </button>
+
     </div>
 </header>
 
@@ -53,9 +77,7 @@
                 <li><span class="label">Email:</span> <a href="mailto:aashikali240@gmail.com">aashikali240@gmail.com</a></li>
                 <li><span class="label">LinkedIn:</span>
                     <a href="https://www.linkedin.com/in/aashik-ali-744419207" target="_blank" rel="noopener">
-                        linkedin.com/in/aashik-ali-744419207
-                    </a>
-                </li>
+                        linkedin.com/in/aashik-ali-744419207</a></li>
                 <li><span class="label">Location:</span> Asir, Saudi Arabia</li>
             </ul>
         </section>
@@ -69,43 +91,27 @@
                 Qualified with an ITI in Computer Science and a Diploma in Instrumentation. 
                 Currently enhancing capabilities in Cloud and DevOps (Linux/Ubuntu, AWS, Jenkins CI/CD, Docker, Kubernetes, Git/GitHub/GitLab). 
                 Known for reliability, safety awareness, and disciplined work practices. 
-                Seeking an opportunity in Riyadh with Saudi Aramco or Aramco-partner companies in IT support, technical operations, or logistics roles, contributing to system stability,
-                operational efficiency, and secure, scalable environments."
+                Seeking an opportunity in Riyadh with Saudi Aramco or Aramco-partner companies in IT support, technical operations, or logistics roles, 
+				contributing to system stability,operational efficiency, and secure, scalable environments."
             </p>
         </section>
 
-        <section class="card">
-            <h2>Computer skills</h2>
-            <div class="tags">
-                <span class="tag">MS Office</span>
-                <span class="tag">Data Cleaning</span>
-                <span class="tag">Power BI</span>
-                <span class="tag">Logistics Management</span>
-                <span class="tag">E-mail Management</span>
-                <span class="tag">IT Operation</span>
-                <span class="tag">Basic Programming(HTML, CSS, PYTHON)</span>
-                <span class="tag">Git & GitHub, AWS, Jenkins, Docker</span>
-                <span class="tag">System Troubleshooting</span>
-                <span class="tag">Backhoe Loader operator </span>
+        
+            
+      <section class="card">
+    <h2>Computer skills</h2>
+    <div class="tags" id="skillsContainer">
+	</div>
+
                 
-            </div>
+            
         </section>
 
 
         <section class="card">
             <h2>Technical skills</h2>
-            <div class="tags">
-                <span class="tag">Electrical  (Motor, Fan, Cooler, Washing Machine)</span>
-                <span class="tag">Electrical Instrument Troubleshooting</span>
-                <span class="tag">Analog Electronics Circuits</span>
-                <span class="tag">Temperature Measurement & Instrument installation</span>
-                <span class="tag">Pressure Measurement & Instrument installation</span>
-                <span class="tag">Flow Measurement & Instrument installation</span>
-                <span class="tag">Level Measurement & Instrument installation</span>
-                <span class="tag">Analog Electronics Circuits</span>
-                <span class="tag">SCADA</span>
-                <span class="tag">PLC</span>
-            </div>
+           <div class="tags" id="TechskillsContainer">
+	</div>
         </section>
 
         <section class="card">
@@ -402,6 +408,136 @@ Intermediate (12th) – Physics & Mathematics</h3>
 
 </div>
 
+
+	
+</main>
+
+ </section>
+
+	<!-- ⭐ FULL GALAXY + FIRE METEOR + CLICK BURST -->
+<canvas id="universe"></canvas>
+
+<style>
+#universe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  background: radial-gradient(circle at top, #120a25 0%, #02010a 45%, #000 100%);
+}
+</style>
+
+<section class="certificate-gallery">
+  <h2 class="gallery-title">Certificates & Achievements</h2>
+
+  <div class="gallery-slider">
+    <div class="gallery-track">
+      <!-- Repeat images for smooth infinite effect -->
+      <img src="IMG_20220411_004410.jpg" alt="Certificate 1">
+      <img src="iti Certificate.png" alt="Certificate 2">
+      <img src="image.png" alt="Certificate 3">
+      <img src="IMG_20191004_0001 (4).jpg" alt="Certificate 4">
+      <img src="IMG_20221212_134419.jpg" alt="Certificate 5">
+	  <img src="IMG_20220411_003704.png" alt="Certificate 6">	
+	  <img src="IMG_20251214_085006.jpg" alt="Certificate 7">
+	  
+      <!-- Duplicate again for seamless loop -->
+       <img src="IMG_20220411_004410.jpg" alt="Certificate 1">
+      <img src="iti Certificate.png" alt="Certificate 2">
+      <img src="image.png" alt="Certificate 3">
+      <img src="IMG_20191004_0001 (4).jpg" alt="Certificate 4">
+      <img src="IMG_20221212_134419.jpg" alt="Certificate 5">
+	  <img src="IMG_20220411_003704.png" alt="Certificate 6">
+	  <img src="IMG_20251214_085006.jpg" alt="Certificate 7">
+	  
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<footer class="site-footer">
+
+    <div class="container footer-content">
+ 
+<p><a href="adminLogin.html" class="social"><i class="fa-solid fa-user-shield"></i> </a>© <span id="year"></span> · Designed & coded by <strong>Aashik Ali</strong></p>
+
+        <!-- Realistic Social Icons -->
+        <div class="social-icons"><a href="https://wa.me/966541421337" target="_blank" class="social"><i class="fab fa-whatsapp"></i></a>
+
+            <a href="#" class="social"><i class="fab fa-facebook"></i></a>
+			<a href="#" class="social"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social"><i class="fab fa-twitter"></i></a>
+        </div>
+
+        <a href="#top" class="back-to-top">Back to top ↑</a>
+    </div>
+</footer>
+
+
+
+<script src="script.js"></script>
+</body>
+
+
+</html>
+
+
+<script>
+
+// Set current year in footer
+document.addEventListener("DOMContentLoaded", () => {
+    const yearSpan = document.getElementById("year");
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+
+    // Theme toggle with localStorage
+    const themeToggle = document.getElementById("themeToggle");
+    const root = document.documentElement;
+
+    const savedTheme = localStorage.getItem("cv-theme");
+    if (savedTheme === "dark") {
+        root.setAttribute("data-theme", "dark");
+        if (themeToggle) {
+            themeToggle.querySelector(".theme-icon").textContent = "☀️";
+        }
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            const currentTheme = root.getAttribute("data-theme");
+            if (currentTheme === "dark") {
+                root.removeAttribute("data-theme");
+                localStorage.setItem("cv-theme", "light");
+                themeToggle.querySelector(".theme-icon").textContent = "🌙";
+            } else {
+                root.setAttribute("data-theme", "dark");
+                localStorage.setItem("cv-theme", "dark");
+                themeToggle.querySelector(".theme-icon").textContent = "☀️";
+            }
+        });
+    }
+});
+</script>
+
+<script>
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("menu");
+
+    hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        menu.classList.toggle("active");
+    });
+</script>
+
+
 <script>
   const btn = document.querySelector("button");
   btn.addEventListener("mouseover", () => {
@@ -434,22 +570,7 @@ Intermediate (12th) – Physics & Mathematics</h3>
 </script>
 	
 		
-    </section>
-
-	<!-- ⭐ FULL GALAXY + FIRE METEOR + CLICK BURST -->
-<canvas id="universe"></canvas>
-
-<style>
-#universe {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: radial-gradient(circle at top, #120a25 0%, #02010a 45%, #000 100%);
-}
-</style>
+   
 
 <script>
 const canvas = document.getElementById("universe");
@@ -597,28 +718,91 @@ document.addEventListener("click", function(e) {
 });
 </script>
 
-	
-</main>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC00_e1kuKJShvPZDh_-uq8sZBaEQyLkoQ",
+  authDomain: "cv-database-1b96d.firebaseapp.com",
+  databaseURL: "https://cv-database-1b96d-default-rtdb.firebaseio.com",
+  projectId: "cv-database-1b96d",
+  storageBucket: "cv-database-1b96d.firebasestorage.app",
+  messagingSenderId: "862630825074",
+  appId: "1:862630825074:web:b8f64a097df0b29d2e46eb"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+/* ---------------- COMPUTER SKILLS ---------------- */
+const skillsRef = ref(db, "skills");
+
+onValue(skillsRef, (snapshot) => {
+    let container = document.getElementById("skillsContainer");
+    if (!container) return;
+    container.innerHTML = "";
+
+    snapshot.forEach((child) => {
+        const data = child.val();
+
+        if (typeof data === "string") {
+            container.innerHTML += `<span class="tag">${data}</span>`;
+        }
+        else if (typeof data === "object") {
+            if (data.visible === false) return;
+            container.innerHTML += `<span class="tag">${data.name}</span>`;
+        }
+    });
+});
 
 
+/* ---------------- TECHNICAL SKILLS ---------------- */
+const techRef = ref(db, "techSkills");
 
-<footer class="site-footer">
-    <div class="container footer-content">
-        <p>© <span id="year"></span> · Designed & coded by <strong>Aashik Ali</strong></p>
+onValue(techRef, (snapshot) => {
+    let container = document.getElementById("TechskillsContainer");
+    if (!container) return;
+    container.innerHTML = "";
 
-        <!-- Realistic Social Icons -->
-        <div class="social-icons">
-            <a href="https://wa.me/966541421337" target="_blank" class="social"><i class="fab fa-whatsapp"></i></a>
+    snapshot.forEach((child) => {
+        const data = child.val();
 
-            <a href="#" class="social"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="social"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="social"><i class="fab fa-twitter"></i></a>
-        </div>
+        if (typeof data === "string") {
+            container.innerHTML += `<span class="tag">${data}</span>`;
+        }
+        else if (typeof data === "object") {
+            if (data.visible === false) return;
+            container.innerHTML += `<span class="tag">${data.name}</span>`;
+        }
+    });
+});
 
-        <a href="#top" class="back-to-top">Back to top ↑</a>
-    </div>
-</footer>
+
+/* ---------------- GALLERY ---------------- */
+const galleryRef = ref(db, "gallery");
+
+onValue(galleryRef, (snapshot) => {
+    let container = document.getElementById("galleryContainer");
+    if (!container) return;
+    container.innerHTML = "";
+
+    snapshot.forEach((child) => {
+        const data = child.val();
+
+        if (!data || data.visible === false) return;
+
+        container.innerHTML += `
+            <div class="gallery-item">
+                <img src="${data.imageURL}" alt="${data.title}">
+                <h3>${data.title}</h3>
+                <p>${data.category}</p>
+            </div>
+        `;
+    });
+});
+</script>
 
 <script>
     window.onload = () => {
@@ -627,8 +811,3 @@ document.addEventListener("click", function(e) {
 </script>
 
 
-
-
-<script src="script.js"></script>
-</body>
-</html>
